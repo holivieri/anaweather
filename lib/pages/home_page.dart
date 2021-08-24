@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Weather App'),
+        title: Text('ANA Weather App'),
       ),
       body: BlocBuilder<LocationBloc, LocationState>(
         builder: (context, state) {
@@ -27,12 +27,11 @@ class _HomePageState extends State<HomePage> {
           }
           if (state is LocationLoadSuccess) {
             return Center(
-              child: Text(
-                'Location: (${state.position.latitude}, ${state.position.longitude})',
-              ),
+              child: returnCurrentLocationWeather(state.position),
             );
+          } else {
+            return Center(child: CircularProgressIndicator());
           }
-          return Center(child: CircularProgressIndicator());
         },
       ),
     );
@@ -40,15 +39,16 @@ class _HomePageState extends State<HomePage> {
 
   Widget returnCurrentLocationWeather(Position position) {
     WeatherService service = WeatherService();
-    String cityName = 'Vancouver';
 
     return FutureBuilder(
-      future: service.getWeatherByCity(cityName),
+      future: service.getWeatherByCity(position),
       builder: (BuildContext context, AsyncSnapshot<CityModel?> snapshot) {
         if (snapshot.hasData) {
           return CityCard(
-            cityName: cityName,
+            cityName: snapshot.data!.name,
             temperature: snapshot.data!.main.temp.toString(),
+            isCurrentLocation: true,
+            imageUrl: snapshot.data!.icon,
           );
         } else {
           return CircularProgressIndicator();

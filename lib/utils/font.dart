@@ -6,7 +6,12 @@ const TextStyle titleStyle = TextStyle(
   color: Colors.black45,
 );
 
+const TextStyle cityStyle = TextStyle(
+  fontSize: 24,
+  color: Colors.black45,
+);
+
 const TextStyle temperatureStyle = TextStyle(
   fontSize: 30,
-  color: Colors.black45,
+  color: Colors.white,
 );

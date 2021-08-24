@@ -48,6 +48,6 @@ class CityList extends StatelessWidget {
 
   Future<CityModel?> getInfoFromApi(String cityName) async {
     WeatherService service = WeatherService();
-    return await service.getWeatherByCity(cityName);
+    return null; //await service.getWeatherByCity(cityName);
   }
 }

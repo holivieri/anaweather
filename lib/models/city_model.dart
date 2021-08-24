@@ -19,6 +19,7 @@ class CityModel {
     required this.id,
     required this.name,
     required this.cod,
+    required this.icon,
   });
 
   final Coord coord;
@@ -34,6 +35,7 @@ class CityModel {
   final int id;
   final String name;
   final int cod;
+  String icon;
 
   factory CityModel.fromJson(Map<String, dynamic> json) => CityModel(
         coord: Coord.fromJson(json['coord']),
@@ -50,6 +52,8 @@ class CityModel {
         id: json['id'] == null ? null : json['id'],
         name: json['name'] == null ? null : json['name'],
         cod: json['cod'] == null ? null : json['cod'],
+        icon:
+            'http://openweathermap.org/img/wn/${json['weather'][0]['icon']}@2x.png',
       );
 
   Map<String, dynamic> toJson() => {
