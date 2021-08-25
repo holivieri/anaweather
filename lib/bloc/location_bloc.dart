@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:ana_weather/services/weather_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:meta/meta.dart';

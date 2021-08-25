@@ -214,8 +214,8 @@ class Wind {
   });
 
   final double speed;
-  final int deg;
-  final double gust;
+  final int? deg;
+  final double? gust;
 
   factory Wind.fromJson(Map<String, dynamic> json) => Wind(
         speed: json['speed'] == null ? null : json['speed'].toDouble(),

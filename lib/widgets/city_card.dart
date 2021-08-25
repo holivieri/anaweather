@@ -6,12 +6,14 @@ class CityCard extends StatelessWidget {
   final String temperature;
   final bool isCurrentLocation;
   final String imageUrl;
+  final String country;
 
   const CityCard({
     required this.cityName,
     required this.temperature,
     this.isCurrentLocation = false,
     this.imageUrl = '',
+    this.country = '',
   });
 
   @override
@@ -48,24 +50,9 @@ class CityCard extends StatelessWidget {
               ],
             ),
             subtitle:
-                isCurrentLocation ? Text('current location') : Text('city'),
+                isCurrentLocation ? Text('current location') : Text(country),
             trailing: Icon(Icons.chevron_right_outlined),
-          )
-
-          /* Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              cityName,
-              style: titleStyle,
-            ),
-            Text(
-              temperature,
-              style: temperatureStyle,
-            ),
-          ],
-        ), */
-          ),
+          )),
     );
   }
 }
